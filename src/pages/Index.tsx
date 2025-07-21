@@ -27,6 +27,7 @@ interface User {
 const Index = () => {
   const [activeTab, setActiveTab] = useState("live");
   const [selectedUserId, setSelectedUserId] = useState<string>("");
+  const [selectedMonth, setSelectedMonth] = useState<"december" | "january">("december");
   const [liveUsers, setLiveUsers] = useState<User[]>([
     { id: "1", name: "Swetambari", points: 10229695, avatar: avatarSwetambari },
     { id: "2", name: "Shyla", points: 10005725, avatar: avatarShyla },
@@ -79,10 +80,37 @@ const Index = () => {
     { id: "9", name: "Rahul", points: 11420000, avatar: avatarRahul },
   ]);
 
+  const [monthlyUsersDecember] = useState<User[]>([
+    { id: "9", name: "Rahul", points: 2450000, avatar: avatarRahul },
+    { id: "6", name: "teqir", points: 2380000, avatar: avatarTeqir },
+    { id: "1", name: "Swetambari", points: 2250000, avatar: avatarSwetambari },
+    { id: "4", name: "Ashok", points: 2100000, avatar: avatarAshok },
+    { id: "2", name: "Shyla", points: 1950000, avatar: avatarShyla },
+    { id: "8", name: "Shree Krishna", points: 1890000, avatar: avatarShreeKrishna },
+    { id: "3", name: "GLOBAL KING", points: 1750000, avatar: avatarGlobalKing },
+    { id: "5", name: "Abhishek", points: 1680000, avatar: avatarAbhishek },
+    { id: "7", name: "Divine", points: 1520000, avatar: avatarDivine },
+    { id: "10", name: "Kamal", points: 1420000, avatar: avatarKamal },
+  ]);
+
+  const [monthlyUsersJanuary] = useState<User[]>([
+    { id: "7", name: "Divine", points: 3250000, avatar: avatarDivine },
+    { id: "3", name: "GLOBAL KING", points: 3180000, avatar: avatarGlobalKing },
+    { id: "10", name: "Kamal", points: 2980000, avatar: avatarKamal },
+    { id: "1", name: "Swetambari", points: 2850000, avatar: avatarSwetambari },
+    { id: "5", name: "Abhishek", points: 2720000, avatar: avatarAbhishek },
+    { id: "2", name: "Shyla", points: 2640000, avatar: avatarShyla },
+    { id: "8", name: "Shree Krishna", points: 2420000, avatar: avatarShreeKrishna },
+    { id: "4", name: "Ashok", points: 2210000, avatar: avatarAshok },
+    { id: "6", name: "teqir", points: 1990000, avatar: avatarTeqir },
+    { id: "9", name: "Rahul", points: 1850000, avatar: avatarRahul },
+  ]);
+
   // Get current users based on active tab
   const getCurrentUsers = () => {
     switch (activeTab) {
       case "hourly": return hourlyUsers;
+      case "monthly": return selectedMonth === "december" ? monthlyUsersDecember : monthlyUsersJanuary;
       case "family": return familyUsers;
       case "wealth": return wealthUsers;
       default: return liveUsers;
@@ -155,7 +183,9 @@ const Index = () => {
       <div className="max-w-md mx-auto bg-white shadow-xl">
         <LeaderboardHeader 
           activeTab={activeTab} 
-          onTabChange={setActiveTab} 
+          onTabChange={setActiveTab}
+          selectedMonth={selectedMonth}
+          onMonthChange={setSelectedMonth}
         />
         
         <TopThreePodium users={sortedUsers} />
