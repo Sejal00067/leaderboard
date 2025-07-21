@@ -5,6 +5,18 @@ import { LeaderboardList } from "@/components/LeaderboardList";
 import { UserControls } from "@/components/UserControls";
 import { toast } from "@/hooks/use-toast";
 
+// Import profile pictures
+import avatarSwetambari from "@/assets/avatar-swetambari.jpg";
+import avatarShyla from "@/assets/avatar-shyla.jpg";
+import avatarGlobalKing from "@/assets/avatar-globalking.jpg";
+import avatarAshok from "@/assets/avatar-ashok.jpg";
+import avatarAbhishek from "@/assets/avatar-abhishek.jpg";
+import avatarTeqir from "@/assets/avatar-teqir.jpg";
+import avatarDivine from "@/assets/avatar-divine.jpg";
+import avatarShreeKrishna from "@/assets/avatar-shreekrishna.jpg";
+import avatarRahul from "@/assets/avatar-rahul.jpg";
+import avatarKamal from "@/assets/avatar-kamal.jpg";
+
 interface User {
   id: string;
   name: string;
@@ -16,16 +28,16 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("live");
   const [selectedUserId, setSelectedUserId] = useState<string>("");
   const [users, setUsers] = useState<User[]>([
-    { id: "1", name: "Swetambari", points: 10229695 },
-    { id: "2", name: "Shyla", points: 10005725 },
-    { id: "3", name: "GLOBAL KING", points: 9444665 },
-    { id: "4", name: "Ashok", points: 8040750 },
-    { id: "5", name: "Abhishek", points: 8024750 },
-    { id: "6", name: "teqir", points: 8006380 },
-    { id: "7", name: "Divine", points: 8006100 },
-    { id: "8", name: "Shree Krishna", points: 8005795 },
-    { id: "9", name: "Rahul", points: 7500000 },
-    { id: "10", name: "Kamal", points: 7200000 },
+    { id: "1", name: "Swetambari", points: 10229695, avatar: avatarSwetambari },
+    { id: "2", name: "Shyla", points: 10005725, avatar: avatarShyla },
+    { id: "3", name: "GLOBAL KING", points: 9444665, avatar: avatarGlobalKing },
+    { id: "4", name: "Ashok", points: 8040750, avatar: avatarAshok },
+    { id: "5", name: "Abhishek", points: 8024750, avatar: avatarAbhishek },
+    { id: "6", name: "teqir", points: 8006380, avatar: avatarTeqir },
+    { id: "7", name: "Divine", points: 8006100, avatar: avatarDivine },
+    { id: "8", name: "Shree Krishna", points: 8005795, avatar: avatarShreeKrishna },
+    { id: "9", name: "Rahul", points: 7500000, avatar: avatarRahul },
+    { id: "10", name: "Kamal", points: 7200000, avatar: avatarKamal },
   ]);
 
   // Sort users by points in descending order
